@@ -112,20 +112,22 @@ public class SimpleList {
 				list[ iterator ] = temp_list[ iterator ];
 			}	
 		}
+		
 		int index = 0, innerCounter = 0;
+		boolean found = false;
 		int[] temp = new int [ SIZE ] ;
 		
 		for (int iterator = 0; iterator < SIZE; iterator++)
 		{
-			if (list[iterator] != num)
+			if ( list[ iterator ] == num && ( !found ) )
+			{
+				count--;
+				found = true;
+			} else
 			{
 				temp[ innerCounter ] = list [ iterator ];
 				innerCounter++;
-			} else
-			{
-				count--;
-			}
-			
+			}	
 		}
 		list = temp;
 	}
@@ -150,14 +152,18 @@ public class SimpleList {
 	{
 		String result = "";
 		
-		for (int iterator = 0; iterator < SIZE-1; iterator++)
+		if (count > 0) 
 		{
-			result += list[iterator] + " ";
+			for (int iterator = 0; iterator < SIZE; iterator++)
+			{
+				if ( list [iterator] != 0)
+				{
+					result += " " + list[iterator];
+				}
+			}
 		}
 		
-		result += list[SIZE - 1];
-		
-		return result;
+		return result.trim();
 	}
 	
 	/**
@@ -176,6 +182,7 @@ public class SimpleList {
 			if (list[iterator] == num)
 			{
 				index = iterator;
+				break;
 			}
 		}
 		return index;
