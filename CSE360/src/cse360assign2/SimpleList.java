@@ -38,7 +38,7 @@ public class SimpleList {
 	 */
 	public SimpleList()
 	{
-		SIZE = 10;
+		SIZE = 9;
 		list = new int[SIZE];
 		count = 0;
 	}
@@ -94,7 +94,7 @@ public class SimpleList {
 	public void remove(int num)
 	{
 		// Check if the list has more than 25% empty places
-		if ( ( 1 - (count / SIZE) ) > 0.25 )
+		if ( ( double ) ( ( double ) size() / ( double ) SIZE ) > 0.25 )
 		{
 			int [] temp_list = new int[ SIZE ];
 			
@@ -206,11 +206,12 @@ public class SimpleList {
 				temp_list[ iterator ] = list[ iterator ];
 			}
 			
+			int OLD_SIZE = SIZE;
 			SIZE = ( int ) ( SIZE + ( SIZE*0.5 ) );
 			
 			list = new int[ SIZE ];
 			
-			for ( int iterator = 0; iterator < SIZE; iterator++ )
+			for ( int iterator = 0; iterator < OLD_SIZE; iterator++ )
 			{
 				list[ iterator ] = temp_list[ iterator ];
 			}
@@ -218,13 +219,14 @@ public class SimpleList {
 		count++;
 		int positionToEnter = 0;
 		
-		for (int iterator = 0; iterator < SIZE; iterator++)
+		for (int iterator = 0; iterator < SIZE; iterator++ )
 		{
 			if ( list [ iterator ] == 0 )
 			{
 				positionToEnter = iterator;
+				list[ positionToEnter ] = num;
+				break;
 			}
-			list[ positionToEnter ] = num;
 		}
 	}
 	
