@@ -241,6 +241,23 @@ public class SimpleList {
 	}
 	
 	/**
+	 * This method will return the last element in the list.
+	 * If the list is empty then it will return -1.
+	 * 
+	 * @param  none
+	 */
+	public int last()
+	{
+		if (count > 0)
+		{
+			return list[ count - 1 ];
+		} else {
+			return -1;
+		}
+		
+	}
+	
+	/**
 	 * This method return the current number of possible locations
 	 * in the list
 	 *
